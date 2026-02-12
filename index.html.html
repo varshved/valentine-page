@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #ffb6c1, #ffe6f0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px pink;
+    z-index: 2;
+}
+
+img {
+    width: 220px;
+    border-radius: 20px;
+    margin: 15px 0;
+}
+
+h1 {
+    color: #ff1493;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background-color: #ccc;
+    position: absolute;
+}
+
+#message {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #ff1493;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine, baby g? 💖</h1>
+
+    <img src="myphoto.jpeg" alt="My Photo">
+
+    <br>
+
+    <button id="yesBtn" onclick="yesAnswer()">Yes ❤️</button>
+    <button id="noBtn" onmouseover="moveButton()">No 💔</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+// YES message
+function yesAnswer() {
+    document.getElementById("message").innerHTML =
+    "Yayyy!!! You just made my heart so happy 💕🥰🌹";
+}
+
+// NO button runs away
+function moveButton() {
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 100);
+
+    document.getElementById("noBtn").style.left = x + "px";
+    document.getElementById("noBtn").style.top = y + "px";
+}
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
